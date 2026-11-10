@@ -17,3 +17,38 @@
 .dash-row span:first-child{color:var(--muted)}
 .dash-row b{font-weight:600;word-break:break-all;text-align:right}
 .dash-actions{margin-top:24px}
+
+/* Dashboard */
+.dash-main{padding:40px 0 72px}
+.dash-wrap{display:grid;gap:20px;max-width:860px}
+.dash-account{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.dash-account h1{font-size:40px;font-weight:800}
+.dash-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:15px;margin-top:6px;word-break:break-all}
+.dash-h2{font-size:32px;font-weight:800;margin-bottom:6px}
+.match-form{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.match-form .span-2{grid-column:1 / -1}
+.match-form select.auth-input{appearance:none}
+.match-form textarea.auth-input{resize:vertical;font-family:inherit}
+.match-form fieldset{border:0}
+.match-form legend{margin-bottom:6px}
+.opt{color:var(--muted);font-weight:400}
+.checks{display:flex;gap:18px;flex-wrap:wrap}
+.check{display:flex;align-items:center;gap:6px;font-size:15px;cursor:pointer}
+.check input{accent-color:var(--track);width:16px;height:16px}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
+.btn-sm{padding:9px 16px;font-size:14px}
+.matches{display:grid;gap:12px}
+.match{border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:8px;justify-items:start}
+.match-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;width:100%}
+.match-top b{font-family:"Barlow Condensed";font-size:22px;text-transform:uppercase;line-height:1.1}
+.match-top small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.match-bench{font-size:14px;color:var(--track-soft);font-weight:600}
+.match-why{font-size:14.5px;color:#d5d2ca}
+.match .mail{width:100%;margin-top:4px}
+.mail-body{white-space:pre-wrap}
+.mail-copy{margin-top:12px}
+.card .note{font-size:12px;color:var(--muted);margin-top:12px}
+@media (max-width:820px){
+  .match-form{grid-template-columns:1fr}
+  .dash-account h1{font-size:34px}
+}

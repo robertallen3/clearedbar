@@ -9,6 +9,7 @@
     "db:migrate": "node scripts/migrate.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.7.0",
     "@neondatabase/serverless": "^1.2.0",
     "bcryptjs": "^3.0.3",
     "next": "^16.4.6",
