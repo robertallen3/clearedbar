@@ -52,3 +52,6 @@
   .match-form{grid-template-columns:1fr}
   .dash-account h1{font-size:34px}
 }
+.dash-banner{font-size:14px;color:var(--green);background:rgba(92,194,138,.12);border-radius:10px;padding:10px 12px}
+.dash-upgrade{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-color:var(--track)}
+.dash-upgrade .auth-sub{margin-bottom:0}

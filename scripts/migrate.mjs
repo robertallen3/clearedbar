@@ -29,6 +29,9 @@ await sql`
     created_at TIMESTAMPTZ NOT NULL DEFAULT now()
   )
 `;
+// Stripe billing: link each user to their Stripe customer and subscription.
+await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS stripe_customer_id TEXT`;
+await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS stripe_subscription_id TEXT`;
 await sql`CREATE INDEX IF NOT EXISTS sessions_user_id_idx ON sessions (user_id)`;
 await sql`DELETE FROM sessions WHERE expires_at < now()`;
 
