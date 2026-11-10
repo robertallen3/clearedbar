@@ -31,6 +31,37 @@ await sql`
 `;
 await sql`CREATE INDEX IF NOT EXISTS sessions_user_id_idx ON sessions (user_id)`;
 await sql`DELETE FROM sessions WHERE expires_at < now()`;
+
+// AI feature: the athlete's latest profile, each matching run, and each coach email.
+await sql`
+  CREATE TABLE IF NOT EXISTS athlete_profiles (
+    user_id    INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    data       JSONB NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+  )
+`;
+await sql`
+  CREATE TABLE IF NOT EXISTS match_runs (
+    id         SERIAL PRIMARY KEY,
+    user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    profile    JSONB NOT NULL,
+    result     JSONB NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+  )
+`;
+await sql`CREATE INDEX IF NOT EXISTS match_runs_user_id_idx ON match_runs (user_id, created_at DESC)`;
+await sql`
+  CREATE TABLE IF NOT EXISTS coach_emails (
+    id           SERIAL PRIMARY KEY,
+    user_id      INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    run_id       INTEGER NOT NULL REFERENCES match_runs(id) ON DELETE CASCADE,
+    school_index INTEGER NOT NULL,
+    subject      TEXT NOT NULL,
+    body         TEXT NOT NULL,
+    created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE (run_id, school_index)
+  )
+`;
 console.log("[migrate] Tables are ready.");
 
 // Demo account: credentials come from env vars, never from the code.

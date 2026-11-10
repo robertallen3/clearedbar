@@ -9,7 +9,7 @@ Next.js app for ClearedBar: marketing homepage plus email/password accounts stor
 | `/`          | Homepage (same design as the original `index.html`) |
 | `/signup`    | Create an account (plan defaults to `free`)        |
 | `/login`     | Log in                                             |
-| `/dashboard` | Shows your email and plan, with a Log out button   |
+| `/dashboard` | Account info, AI school matching (reach / target / likely) and AI coach emails |
 
 ## Environment variables
 
@@ -18,8 +18,17 @@ Next.js app for ClearedBar: marketing homepage plus email/password accounts stor
 | `DATABASE_URL`  | Added automatically when you connect Neon in Vercel → Storage |
 | `DEMO_EMAIL`    | You set it in Vercel (e.g. `demo@demo.com`)                    |
 | `DEMO_PASSWORD` | You set it in Vercel                                           |
+| `ANTHROPIC_API_KEY` | Your Anthropic API key, set in Vercel (powers the AI feature) |
 
 No secrets live in the code. See `.env.example`.
+
+## AI feature
+
+On the dashboard, athletes enter their event, PR, grad year, GPA and preferences. Claude
+(`lib/ai.ts`) returns real college programs sorted into reach / target / likely, and drafts a
+personalized email to each program's event coach. Free plan: 1 search with 3 schools and 1
+email. Pro: unlimited searches (10 schools each) and unlimited emails. Results are saved in
+the `match_runs` and `coach_emails` tables.
 
 ## Database
 
