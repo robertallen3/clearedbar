@@ -50,7 +50,7 @@ export async function findMatchesAction(prev: MatchState, formData: FormData): P
   const limits = LIMITS[user.plan];
   const [{ count }] = (await sql()`SELECT count(*)::int AS count FROM match_runs WHERE user_id = ${user.id}`) as { count: number }[];
   if (count >= limits.matchRuns) {
-    return { run: prev.run, profile, error: "The free plan includes one school search. Upgrade to Pro for unlimited searches and 10 schools each time." };
+    return { run: prev.run, profile, error: "The free plan includes one school search. Upgrade to Pro above for unlimited searches and 10 schools each time." };
   }
 
   try {
@@ -85,7 +85,7 @@ export async function writeEmailAction(runId: number, schoolIndex: number): Prom
 
   const [{ count }] = (await sql()`SELECT count(*)::int AS count FROM coach_emails WHERE user_id = ${user.id}`) as { count: number }[];
   if (count >= LIMITS[user.plan].emails) {
-    return { error: "The free plan includes one coach email. Upgrade to Pro for unlimited emails." };
+    return { error: "The free plan includes one coach email. Upgrade to Pro above for unlimited emails." };
   }
 
   try {

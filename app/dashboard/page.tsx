@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { logOut } from "@/app/actions";
+import { startCheckout } from "@/app/billing/actions";
 import MatchFinder from "@/components/MatchFinder";
 import SimpleNav from "@/components/SimpleNav";
 import type { AthleteProfile, CoachEmail, MatchResult } from "@/lib/ai";
@@ -13,7 +14,16 @@ export const metadata: Metadata = { title: "Dashboard · ClearedBar" };
 // AI requests can take up to a minute; give server actions on this page room.
 export const maxDuration = 300;
 
-export default async function Dashboard() {
+const CHECKOUT_MESSAGES: Record<string, { text: string; ok: boolean }> = {
+  success: { text: "Payment received. Welcome to ClearedBar Pro!", ok: true },
+  pending: { text: "We're confirming your payment with Stripe. Refresh in a moment.", ok: true },
+  canceled: { text: "Checkout canceled. You haven't been charged.", ok: false },
+  error: { text: "We couldn't open checkout. Please try again.", ok: false },
+};
+
+export default async function Dashboard({ searchParams }: { searchParams: Promise<{ checkout?: string }> }) {
+  const { checkout } = await searchParams;
+  const banner = checkout ? CHECKOUT_MESSAGES[checkout] : undefined;
   const user = await getCurrentUser();
   if (!user) redirect("/login");
 
@@ -48,6 +58,18 @@ export default async function Dashboard() {
               <button type="submit" className="btn ghost">Log out</button>
             </form>
           </div>
+          {banner && <p className={banner.ok ? "dash-banner" : "auth-error"} role="status">{banner.text}</p>}
+          {user.plan === "free" && (
+            <div className="card dash-upgrade">
+              <div>
+                <h2 className="dash-h2">Go Pro · $9.99/month</h2>
+                <p className="auth-sub">Unlimited school searches with 10 matches each, and unlimited coach emails.</p>
+              </div>
+              <form action={startCheckout}>
+                <button type="submit" className="btn">Upgrade to Pro</button>
+              </form>
+            </div>
+          )}
           <MatchFinder
             profile={profiles[0]?.data ?? null}
             initialRun={latestRun}
