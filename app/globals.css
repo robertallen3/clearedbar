@@ -1,0 +1,112 @@
+:root{
+  --ink:#14161a; --ink2:#1d2026; --line:#2c3038;
+  --track:#e4572e; --track-soft:#f3a07f;
+  --cream:#f5f1e8; --muted:#a3a8b3;
+  --green:#5cc28a; --amber:#f2b84b; --red:#ef6b5b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--ink);color:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.display{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(20,22,26,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Barlow Condensed";font-weight:800;font-size:26px;text-decoration:none;text-transform:uppercase}
+.logo svg{width:30px;height:30px}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--muted)}
+nav ul a{text-decoration:none}
+nav ul a:hover{color:var(--cream)}
+.btn{display:inline-block;white-space:nowrap;background:var(--track);color:#fff;font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{background:#cf4620;transform:translateY(-1px)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--cream)}
+.btn.ghost:hover{background:var(--ink2)}
+
+/* hero */
+.hero{padding:88px 0 72px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--track-soft);letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(52px,7vw,88px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--track)}
+.hero p.lead{font-size:19px;color:#d5d2ca;max-width:520px;margin:22px 0 32px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* match card */
+.card{background:var(--ink2);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.card .who{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}
+.card .who b{font-family:"Barlow Condensed";font-size:24px;text-transform:uppercase}
+.card .who span{font-size:13px;color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.row:last-of-type{border-bottom:0}
+.row small{display:block;color:var(--muted);font-size:12px}
+.tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:999px}
+.reach{background:rgba(239,107,91,.15);color:var(--red)}
+.target{background:rgba(242,184,75,.15);color:var(--amber)}
+.likely{background:rgba(92,194,138,.15);color:var(--green)}
+.card .note{font-size:12px;color:var(--muted);margin-top:12px}
+
+/* track lane stripes */
+.lanes{height:10px;background:repeating-linear-gradient(90deg,var(--track) 0 60px,transparent 60px 72px);opacity:.9}
+
+section{padding:88px 0}
+.sec-head{max-width:640px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(38px,5vw,56px);font-weight:800}
+.sec-head p{color:var(--muted);margin-top:14px;font-size:17px}
+
+/* problem */
+.problem{background:var(--cream);color:var(--ink)}
+.problem .sec-head p{color:#5b5f68}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stat{border-top:3px solid var(--track);padding-top:18px}
+.stat .display{font-size:30px;font-weight:800;margin-bottom:8px}
+.stat p{color:#4a4e57;font-size:15px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:28px}
+.step .num{font-family:"Barlow Condensed";font-weight:800;font-size:56px;color:var(--track);line-height:1}
+.step h3{font-size:26px;margin:10px 0 10px}
+.step p{color:var(--muted);font-size:15px}
+
+/* email preview */
+.email{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+.mail{background:#fff;color:#222;border-radius:14px;padding:24px;font-size:14.5px;line-height:1.65}
+.mail .hdr{font-size:13px;color:#777;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:14px}
+.mail .hdr b{color:#222}
+.mail mark{background:#fde3d8;color:#222;padding:0 3px;border-radius:3px}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:780px}
+.plan{border:1px solid var(--line);border-radius:18px;padding:30px;background:var(--ink2)}
+.plan.pro{border-color:var(--track);position:relative}
+.plan.pro::before{content:"Most popular";position:absolute;top:-12px;left:24px;background:var(--track);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.plan h3{font-size:28px}
+.price{font-family:"Barlow Condensed";font-weight:800;font-size:56px;margin:8px 0 2px}
+.price span{font-size:18px;color:var(--muted);font-family:Inter;font-weight:500}
+.plan ul{list-style:none;margin:20px 0 26px}
+.plan li{padding:7px 0 7px 26px;position:relative;font-size:15px;color:#d5d2ca}
+.plan li::before{content:"";position:absolute;left:0;top:15px;width:14px;height:3px;background:var(--track);border-radius:2px}
+
+/* founder */
+.founder{background:var(--cream);color:var(--ink)}
+.founder .wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;max-width:880px}
+.badge{width:150px;height:150px;border-radius:50%;background:var(--track);display:grid;place-items:center;color:#fff;font-family:"Barlow Condensed";font-weight:800;font-size:56px}
+.founder blockquote{font-size:21px;line-height:1.55}
+.founder cite{display:block;margin-top:16px;font-style:normal;font-weight:600}
+.founder cite span{display:block;font-weight:400;color:#5b5f68;font-size:15px}
+
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media (max-width:820px){
+  nav ul{display:none}
+  nav .btn{padding:9px 16px;font-size:14px}
+  .logo{font-size:22px}
+  .hero{padding:56px 0}
+  .hero .wrap,.email,.founder .wrap{grid-template-columns:1fr}
+  .stats,.steps,.plans{grid-template-columns:1fr}
+  .badge{width:110px;height:110px;font-size:42px}
+  section{padding:64px 0}
+}
