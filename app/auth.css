@@ -1,0 +1,19 @@
+/* Styles for the sign-up, log-in and dashboard pages. Prefixed so they never touch the homepage. */
+.auth-main{min-height:calc(100vh - 65px);display:grid;place-items:center;padding:56px 0}
+.auth-card{width:100%;max-width:420px}
+.auth-card h1{font-size:44px;font-weight:800;margin-bottom:8px}
+.auth-card .auth-sub{color:var(--muted);font-size:15px;margin-bottom:24px}
+.auth-form{display:grid;gap:16px}
+.auth-label{display:grid;gap:6px;font-size:14px;font-weight:500}
+.auth-input{font:inherit;font-size:15px;color:var(--cream);background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px 14px;outline:none;transition:border-color .15s}
+.auth-input:focus{border-color:var(--track)}
+.auth-hint{font-size:13px;color:var(--muted);margin-top:-8px}
+.auth-error{font-size:14px;color:var(--red);background:rgba(239,107,91,.12);border-radius:10px;padding:10px 12px}
+.auth-submit{width:100%;margin-top:4px}
+.auth-submit:disabled{opacity:.6;cursor:default;transform:none}
+.auth-switch{font-size:14px;color:var(--muted);text-align:center}
+.auth-switch a{color:var(--track-soft)}
+.dash-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.dash-row span:first-child{color:var(--muted)}
+.dash-row b{font-weight:600;word-break:break-all;text-align:right}
+.dash-actions{margin-top:24px}
